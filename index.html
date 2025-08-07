@@ -1,169 +1,178 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Abécédaire Immobilier - Casavo</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background-color: #F28C38;
-            color: #1C2E4A;
-        }
-        header {
-            background-color: white;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .logo {
-            height: 50px;
-            margin-bottom: 10px;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-        #searchBar {
-            margin-top: 1rem;
-            padding: 0.6rem 1rem;
-            width: 80%;
-            max-width: 400px;
-            border-radius: 8px;
-            border: none;
-            font-size: 1rem;
-        }
-        main {
-            padding: 2rem;
-        }
-        .term {
-            background: white;
-            margin: 1.5rem auto;
-            padding: 1rem;
-            border-radius: 12px;
-            max-width: 800px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
-        .term h2 {
-            color: #1C2E4A;
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abécédaire Immobilier - Casavo</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #F28C38;
+      color: #1C2E4A;
+    }
+    header {
+      background-color: white;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .logo {
+      height: 50px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    #searchBar {
+      margin-top: 1rem;
+      padding: 0.6rem 1rem;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+    }
+    main {
+      padding: 2rem;
+    }
+    .term {
+      background: white;
+      margin: 1.5rem auto;
+      padding: 1rem;
+      border-radius: 12px;
+      max-width: 800px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .term h2 {
+      color: #1C2E4A;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAE0lEQVR4nGNgYGBgAAAABAABJzQnCgAAAABJRU5ErkJggg==" alt="Logo Casavo" class="logo" />
-        <h1>Abécédaire de l'immobilier</h1>
-        <input type="text" id="searchBar" placeholder="🔍 Rechercher un terme..." />
-    </header>
-    <main id="definitions"></main>
-    <script>
-        const definitions = [
-            { terme: "AA", definition: "Acte Authentique" },
-            { terme: "Acte authentique", definition: "Document officiel signé devant notaire, concluant la vente." },
-            { terme: "Acte de propriété", definition: "Document officiel prouvant qu'une personne est propriétaire d’un bien." },
-            { terme: "Aide au logement", definition: "Soutien financier de l’État pour réduire le coût du loyer." },
-            { terme: "Amiante", definition: "Matériau dangereux interdit dans les constructions depuis 1997." },
-            { terme: "Appels de fonds", definition: "Demandes de paiement envoyées par le syndic aux copropriétaires." },
-            { terme: "Apport personnel", definition: "Somme apportée par l’acheteur sans emprunt pour financer un achat." },
-            { terme: "Assemblée générale", definition: "Réunion annuelle des copropriétaires décidant des actions à mener." },
-            { terme: "Avis de valeur", definition: "Estimation du prix de vente d’un bien par un professionnel." },
-            { terme: "Bail", definition: "Contrat de location entre un propriétaire et un locataire." },
-            { terme: "Bail meublé", definition: "Contrat de location pour un logement équipé du mobilier nécessaire à la vie courante." },
-            { terme: "Bail mobilité", definition: "Contrat de location courte durée (1 à 10 mois) pour locataires en mobilité pro." },
-            { terme: "Cadastre", definition: "Documents cartographiques recensant les propriétés foncières." },
-            { terme: "Capacité d'emprunt", definition: "Montant maximum qu’un emprunteur peut obtenir selon ses revenus." },
-            { terme: "Carnet d’entretien", definition: "Historique des travaux réalisés dans un immeuble." },
-            { terme: "Caution", definition: "Personne ou organisme garantissant le paiement du loyer en cas de défaut du locataire." },
-            { terme: "Charges de copropriété", definition: "Dépenses liées aux parties communes d’un immeuble." },
-            { terme: "Charges récupérables", definition: "Charges que le propriétaire peut refacturer au locataire." },
-            { terme: "Colocation", definition: "Location d’un même logement par plusieurs personnes." },
-            { terme: "Commission d’agence", definition: "Rémunération versée à l’agence immobilière." },
-            { terme: "Compromis de vente", definition: "Avant-contrat engageant l’acheteur et le vendeur." },
-            { terme: "Conditions suspensives", definition: "Clauses permettant d’annuler la vente si certaines conditions ne sont pas remplies." },
-            { terme: "Congé pour vente", definition: "Notification du propriétaire au locataire en vue de la vente du bien." },
-            { terme: "Copropriété", definition: "Immeuble dont la propriété est répartie entre plusieurs personnes." },
-            { terme: "CS", definition: "Compromis Signé" },
-            { terme: "Diagnostics immobiliers", definition: "État des lieux obligatoires du bien avant vente/location." },
-            { terme: "Droit de préemption", definition: "Priorité d’achat accordée au locataire ou à la mairie." },
-            { terme: "Droits de mutation", definition: "Taxes perçues par l'État lors d'une vente immobilière." },
-            { terme: "Déclaration préalable", definition: "Autorisation pour de petits travaux ne nécessitant pas de permis de construire." },
-            { terme: "Délai de rétractation", definition: "Temps légal pour annuler l’achat d’un bien immobilier." },
-            { terme: "Elite Mentor", definition: "Agent référent sur un secteur donné." },
-            { terme: "Fonds de roulement", definition: "Trésorerie disponible pour faire face aux dépenses courantes." },
-            { terme: "Fonds de travaux", definition: "Épargne obligatoire pour financer les travaux futurs." },
-            { terme: "Garantie des vices cachés", definition: "Protection en cas de défauts non visibles lors de la vente." },
-            { terme: "Garantie décennale", definition: "Garantie sur les dommages affectant la solidité d’un bien pendant 10 ans." },
-            { terme: "Garantie financière", definition: "Assurance de remboursement des sommes versées." },
-            { terme: "Honoraires", definition: "Rémunération pour un service immobilier (ex : notaire, agence)." },
-            { terme: "Hypothèque", definition: "Garantie sur le bien immobilier en cas de non-paiement d’un prêt." },
-            { terme: "Immatriculation de copropriété", definition: "Enregistrement obligatoire d’une copropriété au registre national." },
-            { terme: "Indice de référence des loyers", definition: "Indice utilisé pour réviser un loyer." },
-            { terme: "Investissement locatif", definition: "Achat d’un bien destiné à la location." },
-            { terme: "Locataire protégé", definition: "Personne de plus de 65 ans avec faibles revenus bénéficiant d’une protection." },
-            { terme: "Location vide", definition: "Location d’un logement non meublé." },
-            { terme: "Loi Alur", definition: "Loi encadrant les baux, la location et la copropriété." },
-            { terme: "Loi Carrez", definition: "Méthode de calcul de la surface privative d’un logement." },
-            { terme: "Loi Pinel", definition: "Dispositif fiscal pour l’investissement locatif dans le neuf." },
-            { terme: "Mandat de vente", definition: "Contrat autorisant un professionnel à vendre un bien." },
-            { terme: "Notaire", definition: "Officier public authentifiant les ventes immobilières." },
-            { terme: "Nue-propriété", definition: "Droit de disposer d’un bien sans en percevoir les revenus." },
-            { terme: "OCS", definition: "Offre Contre Signée" },
-            { terme: "Offre d’achat", definition: "Engagement d’un acquéreur à acheter un bien." },
-            { terme: "PLU (Plan Local d’Urbanisme)", definition: "Document fixant les règles d’urbanisme d’une commune." },
-            { terme: "Plus-value immobilière", definition: "Gain réalisé lors de la revente d’un bien." },
-            { terme: "Promesse de vente", definition: "Engagement du vendeur à vendre à un acheteur." },
-            { terme: "Propriétaire bailleur", definition: "Personne mettant un bien en location." },
-            { terme: "Préavis", definition: "Délai entre l’annonce du départ du locataire et son départ effectif." },
-            { terme: "Prêt à taux zéro (PTZ)", definition: "Aide de l’État pour faciliter l’accession à la propriété." },
-            { terme: "Quote-part", definition: "Part de charges ou de propriété d’un copropriétaire." },
-            { terme: "Rendement locatif", definition: "Rapport entre loyers perçus et prix d’achat." },
-            { terme: "Règlement de copropriété", definition: "Règles de fonctionnement de la copropriété." },
-            { terme: "Réserve foncière", definition: "Terrain réservé à une utilisation future." },
-            { terme: "Résidence principale", definition: "Logement occupé la majorité de l’année." },
-            { terme: "Résidence secondaire", definition: "Logement utilisé ponctuellement." },
-            { terme: "Servitude", definition: "Obligation imposée sur un bien pour l’usage d’un autre." },
-            { terme: "Slack", definition: "Plateforme de communication essentielle chez Casavo." },
-            { terme: "Surface habitable", definition: "Espace réellement utilisable par les occupants." },
-            { terme: "Surface utile", definition: "Surface habitable + 50 % des annexes." },
-            { terme: "Tantièmes", definition: "Part proportionnelle des charges pour chaque lot de copropriété." },
-            { terme: "Taxe d’habitation", definition: "Impôt local payé par l’occupant d’un logement (supprimé progressivement)." },
-            { terme: "Taxe foncière", definition: "Impôt local payé par les propriétaires." },
-            { terme: "Team Leader", definition: "Responsable d’une équipe d’agents immobiliers." },
-            { terme: "Travaux votés", definition: "Travaux décidés collectivement en assemblée générale." },
-            { terme: "Usufruit", definition: "Droit d’usage d’un bien sans en être propriétaire." },
-            { terme: "Valeur locative", definition: "Montant estimé qu’un bien peut générer en location." },
-            { terme: "VEFA", definition: "Vente en État Futur d’Achèvement (vente sur plan)." },
-            { terme: "Vente avec faculté de rachat", definition: "Possibilité de racheter un bien après l’avoir vendu." },
-            { terme: "Vente longue", definition: "Vente avec délai entre compromis et acte définitif." },
-            { terme: "Viager", definition: "Vente d’un bien contre une rente à vie." },
-            { terme: "Vice caché", definition: "Défaut non visible affectant un bien." },
-            { terme: "Zonage", definition: "Découpage réglementaire d’un territoire pour l’urbanisme." },
-            { terme: "Émoluments", definition: "Frais perçus par le notaire." }
-        ];
-        const searchBar = document.getElementById('searchBar');
-        const main = document.getElementById('definitions');
+  <header>
+    <img src="data:image/png;base64,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" alt="Logo Casavo" class="logo" />
+    <h1>Abécédaire de l'immobilier</h1>
+    <input type="text" id="searchBar" placeholder="🔍 Rechercher un terme..." />
+  </header>
+  <main id="definitions"></main>
+  <script>
+    const definitions = [
+      { terme: "AA", definition: "Acte Authentique" },
+      { terme: "Acte authentique", definition: "Document officiel signé devant notaire, concluant la vente." },
+      { terme: "Acte de propriété", definition: "Document prouvant qu'une personne est propriétaire d’un bien." },
+      { terme: "Aide au logement", definition: "Soutien financier de l’État pour réduire le coût du loyer." },
+      { terme: "Amiante", definition: "Matériau interdit dans les constructions depuis 1997." },
+      { terme: "Appels de fonds", definition: "Demandes de paiement envoyées par le syndic aux copropriétaires." },
+      { terme: "Apport personnel", definition: "Somme apportée par l’acheteur sans emprunt." },
+      { terme: "Assemblée générale", definition: "Réunion annuelle des copropriétaires." },
+      { terme: "Avis de valeur", definition: "Estimation du prix de vente d’un bien par un pro." },
+      { terme: "Bail", definition: "Contrat de location entre un propriétaire et un locataire." },
+      { terme: "Bail mobilité", definition: "Location courte (1 à 10 mois) pour locataires en mobilité." },
+      { terme: "Bail meublé", definition: "Contrat de location avec mobilier complet." },
+      { terme: "Cadastre", definition: "Plans recensant les propriétés foncières." },
+      { terme: "Capacité d'emprunt", definition: "Montant max qu’un emprunteur peut obtenir." },
+      { terme: "Carnet d’entretien", definition: "Historique des travaux réalisés dans l’immeuble." },
+      { terme: "Caution", definition: "Personne/organisme garantissant le paiement." },
+      { terme: "Charges de copropriété", definition: "Dépenses liées aux parties communes." },
+      { terme: "Charges récupérables", definition: "Charges refacturables au locataire." },
+      { terme: "Colocation", definition: "Location partagée d’un même logement." },
+      { terme: "Commission d’agence", definition: "Rémunération versée à l’agence." },
+      { terme: "Compromis de vente", definition: "Avant-contrat engageant vendeur et acheteur." },
+      { terme: "Conditions suspensives", definition: "Clauses annulant la vente si non remplies." },
+      { terme: "Congé pour vente", definition: "Notification du proprio au locataire pour vendre." },
+      { terme: "Copropriété", definition: "Immeuble à propriétaires multiples." },
+      { terme: "CS", definition: "Compromis Signé" },
+      { terme: "Délai de rétractation", definition: "Temps légal pour annuler l’achat." },
+      { terme: "Déclaration préalable", definition: "Autorisation pour petits travaux." },
+      { terme: "Diagnostics immobiliers", definition: "Bilan obligatoire avant vente/location." },
+      { terme: "Droit de préemption", definition: "Priorité d’achat (locataire ou mairie)." },
+      { terme: "Droits de mutation", definition: "Taxes à payer lors d'une vente." },
+      { terme: "Elite Mentor", definition: "Agent référent sur un secteur donné." },
+      { terme: "Émoluments", definition: "Frais perçus par le notaire." },
+      { terme: "Fonds de roulement", definition: "Trésorerie dispo pour les dépenses courantes." },
+      { terme: "Fonds de travaux", definition: "Réserve obligatoire pour travaux futurs." },
+      { terme: "Garantie décennale", definition: "Garantie sur les malfaçons pendant 10 ans." },
+      { terme: "Garantie des vices cachés", definition: "Protection contre les défauts non visibles." },
+      { terme: "Garantie financière", definition: "Sécurité sur les sommes versées." },
+      { terme: "Honoraires", definition: "Frais d’agence ou notaire." },
+      { terme: "Hypothèque", definition: "Garantie de prêt prise sur un bien." },
+      { terme: "Immatriculation de copropriété", definition: "Enregistrement obligatoire de la copropriété." },
+      { terme: "Indice de référence des loyers", definition: "Indice pour révision du loyer." },
+      { terme: "Investissement locatif", definition: "Achat pour mise en location." },
+      { terme: "Location vide", definition: "Location sans mobilier." },
+      { terme: "Locataire protégé", definition: "Plus de 65 ans + faibles revenus." },
+      { terme: "Loi Alur", definition: "Loi encadrant la location et la copropriété." },
+      { terme: "Loi Carrez", definition: "Mesure officielle de surface en copropriété." },
+      { terme: "Loi Pinel", definition: "Défiscalisation pour investissement locatif." },
+      { terme: "Mandat de vente", definition: "Contrat autorisant la vente par un pro." },
+      { terme: "Mandataire judiciaire", definition: "Professionnel désigné pour représenter une personne dans le cadre d’une procédure juridique ou de faillite." },
+      { terme: "Notaire", definition: "Officier public qui valide les actes de vente." },
+      { terme: "Nue-propriété", definition: "Possession du bien sans usage ou loyer." },
+      { terme: "OCS", definition: "Offre Contre Signée" },
+      { terme: "Offre d’achat", definition: "Proposition d’achat par un acquéreur." },
+      { terme: "PLU", definition: "Plan local d’urbanisme." },
+      { terme: "Plus-value immobilière", definition: "Gain à la revente d’un bien." },
+      { terme: "Pré-état daté", definition: "Document transmis avant le compromis, précisant les charges et la situation financière du lot." },
+      { terme: "État daté", definition: "Document officiel du syndic détaillant les charges dues par le vendeur, remis à la signature de l’acte." },
+      { terme: "Préavis", definition: "Délai légal pour quitter un logement." },
+      { terme: "Promesse de vente", definition: "Engagement de vendre à un acheteur." },
+      { terme: "Prêt à taux zéro", definition: "Aide de l’État pour l’achat immobilier." },
+      { terme: "Propriétaire bailleur", definition: "Personne louant un bien immobilier." },
+      { terme: "Quote-part", definition: "Part des charges ou parties communes." },
+      { terme: "Règlement de copropriété", definition: "Règles internes de la copropriété." },
+      { terme: "Rendement locatif", definition: "Rapport entre revenus locatifs et prix d’achat." },
+      { terme: "Réserve foncière", definition: "Terrain conservé pour futurs projets." },
+      { terme: "Résidence principale", definition: "Logement occupé au moins 8 mois/an." },
+      { terme: "Résidence secondaire", definition: "Logement d’appoint ou de vacances." },
+      { terme: "Servitude", definition: "Droit légal accordé à un autre bien." },
+      { terme: "Slack", definition: "Plateforme de communication Casavo." },
+      { terme: "Surface habitable", definition: "Surface intérieure réellement utilisable." },
+      { terme: "Surface utile", definition: "Habitable + 50% des annexes." },
+      { terme: "Taxe d’habitation", definition: "Impôt local payé par l’occupant." },
+      { terme: "Taxe foncière", definition: "Impôt payé par le propriétaire." },
+      { terme: "Tantièmes", definition: "Part proportionnelle d’un lot dans la copro." },
+      { terme: "Tantièmes de répartition", definition: "Part proportionnelle attribuée à chaque lot dans les décisions et les charges de la copropriété." },
+      { terme: "Team Leader", definition: "Manager d’une équipe d’agents." },
+      { terme: "Travaux votés", definition: "Décision collective en assemblée générale." },
+      { terme: "Usufruit", definition: "Droit d’utiliser un bien sans le posséder." },
+      { terme: "Valeur locative", definition: "Potentiel de revenu en cas de location." },
+      { terme: "VEFA", definition: "Vente sur plan (neuf)." },
+      { terme: "Vente avec faculté de rachat", definition: "Reprise possible par l’ancien proprio." },
+      { terme: "Vente longue", definition: "Vente avec délai prolongé." },
+      { terme: "Vice caché", definition: "Défaut invisible découvert après l’achat." },
+      { terme: "Viager", definition: "Vente avec rente versée au vendeur." },
+      { terme: "Zonage", definition: "Découpage des zones constructibles." },
+      { terme: "Grosse de divorce", definition: "Copie exécutoire du jugement de divorce, utilisée pour les formalités administratives." },
+      { terme: "Dévolution successorale", definition: "Acte indiquant qui hérite d’un bien en cas de succession." },
 
-        function renderDefinitions(filter = "") {
-            main.innerHTML = "";
-            definitions
-                .filter(d => d.terme.toLowerCase().includes(filter.toLowerCase()))
-                .sort((a, b) => a.terme.localeCompare(b.terme))
-                .forEach(d => {
-                    const div = document.createElement("div");
-                    div.className = "term";
-                    div.innerHTML = `<h2>${d.terme}</h2><p>${d.definition}</p>`;
-                    main.appendChild(div);
-                });
-        }
+    ];
 
-        searchBar.addEventListener("input", (e) => {
-            renderDefinitions(e.target.value);
+    const searchBar = document.getElementById('searchBar');
+    const main = document.getElementById('definitions');
+
+    function renderDefinitions(filter = "") {
+      main.innerHTML = "";
+      definitions
+        .filter(d => d.terme.toLowerCase().includes(filter.toLowerCase()))
+        .sort((a, b) => a.terme.localeCompare(b.terme))
+        .forEach(d => {
+          const div = document.createElement("div");
+          div.className = "term";
+          div.innerHTML = `<h2>${d.terme}</h2><p>${d.definition}</p>`;
+          main.appendChild(div);
         });
+    }
 
-        renderDefinitions();
-    </script>
+    searchBar.addEventListener("input", (e) => {
+      renderDefinitions(e.target.value);
+    });
+
+    renderDefinitions();
+  </script>
 </body>
 </html>
